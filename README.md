@@ -17,7 +17,7 @@ Le projet peut être utilisé comme support de cours, de démonstration ou de po
 
 ## Prérequis
 
-- Java JDK 8 ou supérieur
+- Java JDK 25 ou supérieur
 - Un terminal ou un IDE Java (IntelliJ IDEA, Eclipse, VS Code)
 
 ## Structure du projet
