@@ -7,7 +7,7 @@ Projet Java pédagogique dédié à la compréhension et à la mise en pratique 
 Ce dépôt sert de base pour explorer les principes de conception les plus utilisés en Java, notamment les design patterns GoF. Il est conçu pour être simple, clair et facilement extensible.
 
 Le projet peut être utilisé comme support de cours, de démonstration ou de point de départ pour des exercices de programmation orientée objet.
-
+<img src="screens/gof.png">
 ## Objectifs
 
 - Comprendre les concepts de conception réutilisables
