@@ -1,7 +1,7 @@
 package comportement.strategypattern;
 
 
-public interface Sort {
+public interface ISort {
 
-    void sort();
+    void sort(int[] values);
 }
