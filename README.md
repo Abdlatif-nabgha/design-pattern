@@ -56,6 +56,7 @@ designpattern/
 │   └── structure/
 ├── screens/
 │   ├── gof.png
+│   ├── observer.png
 │   └── strategy.png
 ├── README.md
 ├── .gitignore
@@ -116,6 +117,10 @@ Le code source correspondant à ce pattern est disponible dans :
 ## Design Pattern : Observer (Observateur)
 
 - **Catégorie** : Comportement
+
+<p align="center">
+  <img src="screens/observer.png" alt="Diagramme de classe Observer Pattern" width="700">
+</p>
 
 ### Problème résolu
 Dans une application, lorsqu'un objet (le **Sujet** / **Observable**) change d'état, plusieurs autres objets (**Observateurs**) doivent en être informés et réagir. 
