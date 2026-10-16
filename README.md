@@ -35,6 +35,15 @@ Il permet de décrire avec succès des types de solutions récurrentes à des pr
 designpattern/
 ├── src/
 │   ├── comportement/
+│   │   ├── observerpattern/
+│   │   │   ├── client/
+│   │   │   │   └── Main.java
+│   │   │   └── obs/
+│   │   │       ├── Observable.java
+│   │   │       ├── ObservableImpl.java
+│   │   │       ├── Observer.java
+│   │   │       ├── ObserverImpl.java
+│   │   │       └── ObserverImpl2.java
 │   │   └── strategypattern/
 │   │       ├── isortImpl/
 │   │       │   ├── BubbleSort.java
@@ -101,6 +110,30 @@ Le code source correspondant à ce pattern est disponible dans :
 - Implémentations d'algorithmes de tri : [`BubbleSort.java`](src/comportement/strategypattern/isortImpl/BubbleSort.java), [`SelectionSort.java`](src/comportement/strategypattern/isortImpl/SelectionSort.java), [`InsertionSort.java`](src/comportement/strategypattern/isortImpl/InsertionSort.java)
 - Contexte : [`Context.java`](src/comportement/strategypattern/Context.java)
 - Point d'entrée de test : [`Client.java`](src/comportement/strategypattern/Client.java)
+
+---
+
+## Design Pattern : Observer (Observateur)
+
+- **Catégorie** : Comportement
+
+### Problème résolu
+Dans une application, lorsqu'un objet (le **Sujet** / **Observable**) change d'état, plusieurs autres objets (**Observateurs**) doivent en être informés et réagir. 
+- **Sans le pattern** : Le sujet devrait instancier ou connaître toutes les classes concrètes qui l'écoutent (couplage fort, violation d'OCP) ou les observateurs devraient scruter le sujet en boucle (*polling*, gaspillage de CPU).
+- **Avec l'Observer** : On définit une dépendance **1-à-N** (One-to-Many) à **couplage faible**. Le sujet n'interagit qu'avec l'interface abstraite `Observer`, sans connaître l'identité ni le nombre d'abonnés. Dès qu'un changement a lieu, ils sont notifiés automatiquement.
+
+### Fonctionnement et rôles
+- **`Observable` (Interface)** : Définit les opérations pour s'abonner (`subscribe`), se désabonner (`unsubscribe`) et notifier (`notifyObservers`).
+- **`ObservableImpl` (Sujet concret)** : Maintient la liste des observateurs et stocke l'état (`state`). À chaque appel de `setState(...)`, il diffuse automatiquement le nouvel état à tous les abonnés.
+- **`Observer` (Interface)** : Définit la méthode de mise à jour (`update(int newState)`). Étant une interface fonctionnelle (`@FunctionalInterface`), elle supporte également les lambdas expressions.
+- **`ObserverImpl` & `ObserverImpl2`** : Implémentations concrètes réagissant différemment à chaque mise à jour (affichage direct, historique, calcul cumulé et moyenne).
+
+### Exemple implémenté dans le projet
+Le code source est disponible dans :
+- Interfaces : [`Observable.java`](src/comportement/observerpattern/obs/Observable.java) & [`Observer.java`](src/comportement/observerpattern/obs/Observer.java)
+- Sujet concret : [`ObservableImpl.java`](src/comportement/observerpattern/obs/ObservableImpl.java)
+- Observateurs concrets : [`ObserverImpl.java`](src/comportement/observerpattern/obs/ObserverImpl.java) & [`ObserverImpl2.java`](src/comportement/observerpattern/obs/ObserverImpl2.java)
+- Point d'entrée de test : [`Main.java`](src/comportement/observerpattern/client/Main.java)
 
 ---
 
