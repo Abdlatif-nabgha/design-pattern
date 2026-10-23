@@ -36,14 +36,12 @@ designpattern/
 ├── src/
 │   ├── comportement/
 │   │   ├── observerpattern/
-│   │   │   ├── client/
-│   │   │   │   └── Main.java
-│   │   │   └── obs/
-│   │   │       ├── Observable.java
-│   │   │       ├── ObservableImpl.java
-│   │   │       ├── Observer.java
-│   │   │       ├── ObserverImpl.java
-│   │   │       └── ObserverImpl2.java
+│   │   │   ├── Observer.java
+│   │   │   ├── PhoneDisplay.java
+│   │   │   ├── Subject.java
+│   │   │   ├── TVDisplay.java
+│   │   │   ├── WeatherApp.java
+│   │   │   └── WeatherStation.java
 │   │   └── strategypattern/
 │   │       ├── isortImpl/
 │   │       │   ├── BubbleSort.java
@@ -128,17 +126,18 @@ Dans une application, lorsqu'un objet (le **Sujet** / **Observable**) change d'�
 - **Avec l'Observer** : On définit une dépendance **1-à-N** (One-to-Many) à **couplage faible**. Le sujet n'interagit qu'avec l'interface abstraite `Observer`, sans connaître l'identité ni le nombre d'abonnés. Dès qu'un changement a lieu, ils sont notifiés automatiquement.
 
 ### Fonctionnement et rôles
-- **`Observable` (Interface)** : Définit les opérations pour s'abonner (`subscribe`), se désabonner (`unsubscribe`) et notifier (`notifyObservers`).
-- **`ObservableImpl` (Sujet concret)** : Maintient la liste des observateurs et stocke l'état (`state`). À chaque appel de `setState(...)`, il diffuse automatiquement le nouvel état à tous les abonnés.
-- **`Observer` (Interface)** : Définit la méthode de mise à jour (`update(int newState)`). Étant une interface fonctionnelle (`@FunctionalInterface`), elle supporte également les lambdas expressions.
-- **`ObserverImpl` & `ObserverImpl2`** : Implémentations concrètes réagissant différemment à chaque mise à jour (affichage direct, historique, calcul cumulé et moyenne).
+- **`Subject` (Interface)** : Définit les opérations pour enregistrer (`addObserver`), supprimer (`removeObserver`) et notifier (`notifyObservers`) les observateurs.
+- **`WeatherStation` (Sujet concret)** : Implémente `Subject`, maintient la liste des observateurs et stocke l'état météo (`weather`). À chaque modification via `setWeather(...)`, il diffuse automatiquement la nouvelle météo à tous les observateurs abonnés.
+- **`Observer` (Interface)** : Interface fonctionnelle (`@FunctionalInterface`) définissant la méthode de mise à jour (`update(String weather)`).
+- **`PhoneDisplay` & `TVDisplay` (Observateurs concrets)** : Implémentent `Observer` pour afficher les alertes météo sur différents supports avec leur propre mise en page (`display()`).
+- **`WeatherApp` (Client / Démonstration)** : Configure la station météo, abonne les afficheurs, simule plusieurs changements d'état (`Sunny`, `Rainy`, `Cloudy`), désabonne `TVDisplay`, puis effectue une nouvelle mise à jour (`Windy`).
 
 ### Exemple implémenté dans le projet
 Le code source est disponible dans :
-- Interfaces : [`Observable.java`](src/comportement/observerpattern/obs/Observable.java) & [`Observer.java`](src/comportement/observerpattern/obs/Observer.java)
-- Sujet concret : [`ObservableImpl.java`](src/comportement/observerpattern/obs/ObservableImpl.java)
-- Observateurs concrets : [`ObserverImpl.java`](src/comportement/observerpattern/obs/ObserverImpl.java) & [`ObserverImpl2.java`](src/comportement/observerpattern/obs/ObserverImpl2.java)
-- Point d'entrée de test : [`Main.java`](src/comportement/observerpattern/client/Main.java)
+- Interfaces : [`Subject.java`](src/comportement/observerpattern/Subject.java) & [`Observer.java`](src/comportement/observerpattern/Observer.java)
+- Sujet concret : [`WeatherStation.java`](src/comportement/observerpattern/WeatherStation.java)
+- Observateurs concrets : [`PhoneDisplay.java`](src/comportement/observerpattern/PhoneDisplay.java) & [`TVDisplay.java`](src/comportement/observerpattern/TVDisplay.java)
+- Point d'entrée de test : [`WeatherApp.java`](src/comportement/observerpattern/WeatherApp.java)
 
 ---
 
