@@ -36,23 +36,17 @@ public class User {
     }
     
     public static class Builder {
-        private String name;
-        private String email;
+        private final String name;
+        private final String email;
         private Integer age;
         private String phone;
         private String address;
         
-        public Builder() {
-
-        }
-        public Builder name(String name) {
+        public Builder(String name, String email) {
             this.name = name;
-            return this;
-        }
-        public Builder email(String email) {
             this.email = email;
-            return this;
         }
+
         public Builder age(int age) {
             this.age = age;
             return this;
@@ -67,7 +61,12 @@ public class User {
         }
 
         public User build() {
-            
+            if (name == null || name.isBlank()) {
+                throw new IllegalArgumentException("Name is required");
+            }
+            if (email == null || email.isBlank()) {
+                throw new IllegalArgumentException("Email is required");
+            }
             return new User(this);
         }
     }
