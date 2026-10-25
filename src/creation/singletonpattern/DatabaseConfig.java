@@ -1,4 +1,4 @@
-package creation.builderpattern;
+package creation.singletonpattern;
 
 import java.util.HashMap;
 import java.util.Map;

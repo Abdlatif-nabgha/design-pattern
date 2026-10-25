@@ -7,23 +7,15 @@ public class Pizza {
     private final boolean pepperoni;
     private final boolean mushrooms;
 
-    private Pizza(Builder builder) {
-        
-        size = builder.size;
-        crust = builder.crust;
-        cheese = builder.cheese;
-        pepperoni = builder.pepperoni;
-        mushrooms = builder.mushrooms;
-    }
 
     public static class Builder {
         private final String size;
-        private String crust = "classic";
-        private boolean cheese;
-        private boolean pepperoni;
-        private boolean mushrooms;
+        private String crust = "thin";
+        private boolean cheese = true;
+        private boolean pepperoni = true;
+        private boolean mushrooms = true;
 
-        public Builder(String size) {
+        public Builder (String size) {
             this.size = size;
         }
 
@@ -32,17 +24,17 @@ public class Pizza {
             return this;
         }
 
-        public Builder cheese() {
-            this.cheese = true;
+        public Builder cheese(boolean cheese) {
+            this.cheese = cheese;
             return this;
         }
 
-        public Builder pepperoni() {
-            this.pepperoni = true;
+        public Builder pepperoni(boolean pepperoni) {
+            this.pepperoni = pepperoni;
             return this;
         }
-        public Builder mushrooms() {
-            this.mushrooms = true;
+        public Builder mushrooms(boolean mushrooms) {
+            this.mushrooms = mushrooms;
             return this;
         }
 
@@ -51,9 +43,21 @@ public class Pizza {
         }
     }
 
+      private Pizza(Builder builder) {
+        this.size = builder.size;
+        this.crust = builder.crust;
+        this.cheese = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+        this.mushrooms = builder.mushrooms;
+    }
+    
+    public static Builder builder(String size) {
+        return new Builder(size);
+    }
+    
     @Override
     public String toString() {
-        return size + " pizza, " + crust + " crust, cheese=" + cheese
-                + ", pepperoni=" + pepperoni + ", mushrooms=" + mushrooms;
+        return size + " pizza, " + crust + " crust,  cheese=" + cheese
+                + " pepperoni=" + pepperoni + " mushrooms=" + mushrooms;
     }
 }
