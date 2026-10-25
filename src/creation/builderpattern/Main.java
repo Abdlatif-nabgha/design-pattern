@@ -13,5 +13,13 @@ public class Main {
         System.out.println(user1.getEmail());
         System.out.println(user1.getAge());
         System.out.println(user1.getPhone());
+
+        Pizza pizza = new Pizza.Builder("large")
+                    .crust("thin")
+                    .cheese()
+                    .pepperoni()
+                    .mushrooms()
+                    .build();
+        System.out.println(pizza);
     }
 }
