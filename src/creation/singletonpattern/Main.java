@@ -3,9 +3,12 @@ package creation.singletonpattern;
 public class Main {
     
     public static void main(String[] args) {
-        Singleton s1 = Singleton.getInstance("Data 1");
-        Singleton s2 = Singleton.getInstance("Data 2");
+        AppConfig config1 = AppConfig.getInstance();
+        System.out.println(config1.get("env"));
 
-        System.out.println(s1 == s2);   
+        AppConfig config2 = AppConfig.getInstance();
+        System.out.println(config2.get("port"));
+
+        System.out.println(config1 == config2);
     }
 }

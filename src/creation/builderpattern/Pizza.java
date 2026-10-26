@@ -15,7 +15,7 @@ public class Pizza {
         private boolean pepperoni = true;
         private boolean mushrooms = true;
 
-        public Builder (String size) {
+        private Builder (String size) {
             this.size = size;
         }
 
@@ -43,7 +43,7 @@ public class Pizza {
         }
     }
 
-      private Pizza(Builder builder) {
+    private Pizza(Builder builder) {
         this.size = builder.size;
         this.crust = builder.crust;
         this.cheese = builder.cheese;
@@ -53,11 +53,5 @@ public class Pizza {
     
     public static Builder builder(String size) {
         return new Builder(size);
-    }
-    
-    @Override
-    public String toString() {
-        return size + " pizza, " + crust + " crust,  cheese=" + cheese
-                + " pepperoni=" + pepperoni + " mushrooms=" + mushrooms;
     }
 }

@@ -21,7 +21,7 @@ public class NutritionFacts {
         private int sodium = 0;
         private int carbohydrate = 0;
 
-        public Builder(int servingSize, int servings) {
+        private Builder(int servingSize, int servings) {
             this.servingSize = servingSize;
             this.servings = servings;
         }
@@ -58,5 +58,9 @@ public class NutritionFacts {
         this.fat = builder.fat;
         this.sodium = builder.sodium;
         this.carbohydrate = builder.carbohydrate;
+    }
+
+    public static Builder builder(int servingSize, int servings) {  
+        return new Builder(servingSize, servings);
     }
 }

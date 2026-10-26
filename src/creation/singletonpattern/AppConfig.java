@@ -9,13 +9,14 @@ public class AppConfig {
 
     private AppConfig() {
         settings.put("env", "prod");
+        settings.put("port", "8080");
     }
 
     public static AppConfig getInstance() {
         if (instance == null) {
             synchronized (AppConfig.class) {
                 if (instance == null) {
-                    instance = new AppConfig();
+                    instance = new AppConfig(); // 1. cree l'objet, 2. l'assigner a la variable instance, 3. executer le constructeur 
                 }
             }
         }
