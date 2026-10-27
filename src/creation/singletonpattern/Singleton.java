@@ -3,13 +3,13 @@ package creation.singletonpattern;
 /*****
  * Le Singleton est un design pattern de création qui garantit 
  * qu'une classe ne possède qu'une seule instance dans tout le programme
- * tout en fournissant un point d'accès global à cet instance
+ * tout en fournissant un point d'accès global à cette instance
  *****/
 
 /**
  * 
 Comment ça fonctionne ?
-Pour empêcher la création multiple d'objets, 
+Pour empêcher la multiple création d'objets,
 le Singleton s'appuie sur trois règles simples en programmation orientée objet :
  */
 public class Singleton {
@@ -19,8 +19,7 @@ public class Singleton {
     dans un attribut statique interne.
     */
     private static volatile Singleton instance;
-    private String data;
-    
+
     // 2- Un constructeur privé :
     /*
     On cache ou on rend privé le constructeur de la classe 
@@ -28,7 +27,6 @@ public class Singleton {
     */
     
     private Singleton(String data) {
-        this.data = data;
     }
 
     // 3- Méthode de création (Factory)

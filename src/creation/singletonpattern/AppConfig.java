@@ -16,7 +16,7 @@ public class AppConfig {
         if (instance == null) {
             synchronized (AppConfig.class) {
                 if (instance == null) {
-                    instance = new AppConfig(); // 1. cree l'objet, 2. l'assigner a la variable instance, 3. executer le constructeur 
+                    instance = new AppConfig(); // 1. créé l'objet, 2. L'assigner a la variable instance, 3. executer le constructeur
                 }
             }
         }
